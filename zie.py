@@ -153,6 +153,7 @@ def evaluate_emb(reviews, model, config):
         return llh_array, pos_llh_array
 
 def generate_batch(reviews, rind):
+    print(reviews['atts'])
     atts = reviews['atts'][rind, :]
     _, ind, rate = sparse.find(reviews['scores'][rind, :])
     return atts, ind, rate 
