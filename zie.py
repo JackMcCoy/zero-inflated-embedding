@@ -66,6 +66,7 @@ def fit_emb(reviews, config):
         train_logg = np.zeros([int(config['max_iter'] / nprint) + 1, 3]) 
 
         review_size = reviews['scores'].shape[0]
+        print(reviews)
         for step in range(1, config['max_iter'] + 1):
 
             rind = np.random.choice(review_size)
@@ -153,7 +154,7 @@ def evaluate_emb(reviews, model, config):
         return llh_array, pos_llh_array
 
 def generate_batch(reviews, rind):
-    print(reviews)
+
     atts = reviews['atts'][rind, :]
     _, ind, rate = sparse.find(reviews['scores'][rind, :])
     return atts, ind, rate 
